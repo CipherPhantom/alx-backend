@@ -22,7 +22,6 @@ class LFUCache(BaseCaching):
         self.cache_data[key] = item
         self.count[key] = 0
         if len(self.cache_data) > self.MAX_ITEMS:
-            print(self.count)
             lfu_value = min([v for k, v in self.count.items() if k != key])
             lfu_list = [k for k, v in self.count.items() if v == lfu_value]
             lru_key = [k for k in self.cache_data.keys() if k in lfu_list][0]
